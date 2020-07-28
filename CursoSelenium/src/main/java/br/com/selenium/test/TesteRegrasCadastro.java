@@ -16,7 +16,13 @@ import org.junit.runners.Parameterized.Parameters;
 import br.com.selenium.core.BaseTest;
 import br.com.selenium.page.CadastrarPage;
 
-// ===> UTILIZANDO A METODOLOGIA DDT - DATA DRIVEN TESTING <===
+// UTILIZANDO A ARQUITEURA POM - PAGE OBJECT MODEL
+
+// ====>> UTILIZANDO A METODOLOGIA DDT - DATA DRIVEN TESTING <<=====
+
+// A metodologia DDT deve ser bem avaliada antes do uso em um projeto. O código de um teste escrito nesta metodolia tende a ser menos legível a pessoas tanto de fora do
+// projeto quanto a integrantes do próprio time mas que não dominam a regra do teste ou não estejam familiarizados com o projeto.
+// Desta foram a manutenção e a reposição de integrantes da equipe se torna mais custosa. É necessário que se avalie bem os prós e contras antes de usar o DDT.
 
 @RunWith(Parameterized.class)
 //public class TesteRegrasCadastro { // passa a estender a classe BaseTest e herda os metodos de la
@@ -26,6 +32,8 @@ public class TesteRegrasCadastro extends BaseTest {
 	//private DSL dsl;
 	private CadastrarPage page;
 	
+	
+	// Declara os parametros que serão utilizados no método getCollection. Também é indicado a ordem em que estes métodos devem ser referenciados.
 	@Parameter
 	public String name;
 	
@@ -66,6 +74,8 @@ public class TesteRegrasCadastro extends BaseTest {
 		killDriver();
 	}*/
 	
+	
+	// Métodos de onde os parametros declarados acima serão carregados
 	@Parameters
 	public static Collection<Object[]> getCollection(){
 		return Arrays.asList(new Object[][] {

@@ -81,8 +81,8 @@ public class DriverFactory {
 				case CHROME: cap = DesiredCapabilities.chrome(); break;
 			}
 			try {
-				driver = new RemoteWebDriver(new URL("https://c.carvalho:69cf6f22-5cf1-44f5-a36a-ef3bd5e478ff@ondemand.us-west-1.saucelabs.com:443/wd/hub"), cap);
-				//https://c.carvalho:69cf6f22-5cf1-44f5-a36a-ef3bd5e478ff@ondemand.us-west-1.saucelabs.com:443/wd/hub
+				driver = new RemoteWebDriver(new URL(""), cap);
+				
 			} catch (MalformedURLException e) {
 				System.err.println("Falha de conexão com o GRID.");
 				e.printStackTrace();

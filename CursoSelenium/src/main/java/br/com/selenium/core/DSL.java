@@ -10,9 +10,12 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+// Todas as classes Pages (classes que fazem a interação com a página web do projeto) devem herdar desta classe.
+// Esta classe DSL (que poderia ser unificada com a classe BasePage) promove o reuso de comandos que se tornariam repetitivos dentro do projeto.
+// Também promove a abstração já que os métodos podem ser chamados de forma mais simples e transparentes atraves das classes Pages de cada teste.
 public class DSL {
 
-	// private WebDriver driver; Devido a refatoraçao, também nao precisa desta declaracao. Td vem do DriverFactory.
+	// private WebDriver driver; // Devido a refatoraçao, também nao precisa desta declaracao. Tudo vem da classe DriverFactory.
 
 	//Devido a criaçao da classe DriverFactory, esta classe nao precisa mais de construtor
 	/*public DSL(WebDriver driver) {

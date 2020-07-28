@@ -6,12 +6,15 @@ import org.openqa.selenium.By;
 import br.com.selenium.core.BasePage;
 import br.com.selenium.core.DSL;
 
-// Utilizando o modelo POM - Page Object Model
-// Using the model POM - Page Object Model
+// Esta classe está utilizando o modelo POM - Page Object Model // Using the model POM - Page Object Model
+// Ela herda da BasePage, que neste caso instancia a DSL, local onde foram criados todos os métodos que serão reutilizados no projeto.
+// Como este é o primeiro projeto do curso, só foi necessário criar uma classe Page já que os testes não foram além da funcionalidade de cadastro
+// As classes PAGE devem fazer toda a interação com a página Web que está sendo testada. Nenhum elemento HTML deve ser referenciado fora desta página.
+// As classes de teste (pacote br.com.selenium.test) é onde devem estar toda a regra e todas as assertivas dos testes.
 
-public class CadastrarPage extends BasePage { // passou a estender da BasePage
+public class CadastrarPage extends BasePage { // Após a refatoração, passou a estender da BasePage
 
-	// public DSL dsl; // esta linha foi comentada pq a classe passou a herdar a BasePage
+	// public DSL dsl; // esta linha foi comentada pq a classe passou a herdar da BasePage
 	
 	//Para utilizar a refatoraçao (classe DriverFactory), nao precisa mais usar o parametro WebDriver do construtor dessa classe
 	/*public CadastrarPage(WebDriver driver) {

@@ -14,6 +14,8 @@ import org.openqa.selenium.By;
 import br.com.selenium.core.DSL;
 import br.com.selenium.page.CadastrarPage;
 
+//UTILIZANDO A ARQUITEURA POM - PAGE OBJECT MODEL
+
 public class TesteCampoTreinamentoRefatorado {
 
 	//private WebDriver driver;

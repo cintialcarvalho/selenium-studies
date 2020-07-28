@@ -14,6 +14,7 @@ import org.junit.rules.TestName;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
+// Todas as classes de teste herdam da BaseTest. Aqui ficam os métodos que são comuns a todos os testes. Neste caso, so temos um método que é comum a todos.
 public class BaseTest {
 
 	@Rule

@@ -73,6 +73,7 @@ public class TesteSincronismo {
 		dsl.writeField("novoCampo", "Escrevendo no campo novo");
 		Assert.assertEquals("Escrevendo no campo novo", dsl.returnValueField("novoCampo"));
 	}
+	
 	/*OBS:
 	 * NUNCA se deve misturar espera implicita e explicita. 
 	 * A implicita ocorre no servidor remoto e pode estar sujeita a alteraçoes.

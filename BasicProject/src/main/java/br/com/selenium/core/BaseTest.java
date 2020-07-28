@@ -24,7 +24,7 @@ public class BaseTest {
 	public TestName testName = new TestName(); // Usa o nome do teste durante a execucao para dar nome ao screenshot
 	
 	
-	// ESTE MÉTODO DEVE FICAR AQUI CASO SEJA RODADO USANDO O SELENIUM GRID (testes em paralelo), explicações abaixo:
+	// ESTE MÉTODO inicializar() DEVE FICAR AQUI CASO SEJA RODADO USANDO O SELENIUM GRID (testes em paralelo), explicações abaixo:
 	// Este bloco deve ser comentado pq caso seja transferido para a classe SuiteGeral para que nao seja necessário fazer login a cada teste da suite.
 	// A intençao é que os testes rodem mais rápido. Tambem foi alterada a classe Properties para que o browser nao feche. (Caso nao use teste em paralelo)
 	// Caso esteja usando teste em paralelo, esta inicializacao deve ficar aqui e nao na classe SuiteGeral para que cada threaddriver tenha seu proprio login

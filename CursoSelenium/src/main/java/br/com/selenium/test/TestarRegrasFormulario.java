@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
-
+// Classe sem seguir nenhuma metodologia de boas práticas. Podemos ver que há grande repetiçao de código.
 public class TestarRegrasFormulario {
 
 	private WebDriver driver;

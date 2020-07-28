@@ -9,16 +9,19 @@ import org.junit.Test;
 
 import br.com.selenium.page.CadastrarPage;
 
+//UTILIZANDO A ARQUITEURA POM - PAGE OBJECT MODEL
 
 public class TestarRegrasFormularioRefatorado {
-	//private WebDriver driver; ==> nao precisa mais estar aq pq foi criada a classe DriverFactory
+	//private WebDriver driver; // ==> Refatoração: nao precisa mais estar aq pq foi criada a classe DriverFactory
 	//private DSL dsl;
 	private CadastrarPage page;
 	
 	@Before
 	public void inicializar() {
-	    //driver = new ChromeDriver();
+	    
+		//driver = new ChromeDriver();
 		//driver.manage().window().setSize(new Dimension(1200, 865)); ==> Essas duas linhas nao precisam mais estar aq pq foi criada a classe DriverFactory
+		
 		//driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html"); ==> Esta linha foi substituida pela linha abaixo
 		
 		getDriver().get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");	 // acessa diretamente pq está no import acima
@@ -39,7 +42,8 @@ public class TestarRegrasFormularioRefatorado {
 	
 	@Test
 	public void verificarNomeObrigatorio() {
-		//dsl.clickButton("elementosForm:cadastrar");
+		//dsl.clickButton("elementosForm:cadastrar"); // Esta linha virou uma função na classe DSL (BasePage) e da classe CadastroPage
+		// A função acima, para seguir as boas práticas de programação de testes, só deve ser referenciada pela classe Page (CadastrarPage)
 		page.submit();
 		
 		//Assert.assertEquals("Nome eh obrigatorio", dsl.returnTextThenAcceptAlert());
@@ -48,7 +52,7 @@ public class TestarRegrasFormularioRefatorado {
 	
 	@Test
 	public void verificarSobrenomeObrigatorio() {
-		/*dsl.writeField("elementosForm:nome", "Fulano");
+		/*dsl.writeField("elementosForm:nome", "Fulano"); 
 		dsl.clickButton("elementosForm:cadastrar");*/
 		
 		page.setName("Fulano");
@@ -91,7 +95,7 @@ public class TestarRegrasFormularioRefatorado {
 	@Test
 	public void verificarEsporteSelecionado() {
 		
-		//este método foi refeito utilizando a metodologia DDT na classe TesteRegrasCadastro
+		//OBS: Este método foi refeito utilizando a Metodologia DDT na classe TesteRegrasCadastro.
 		
 		/*dsl.writeField("elementosForm:nome", "Fulano");
 		dsl.writeField("elementosForm:sobrenome", "da Silva");

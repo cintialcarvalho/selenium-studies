@@ -12,10 +12,10 @@ import br.com.selenium.test.TesteRegrasCadastro;
 @SuiteClasses({
 	//TestarRegrasFormularioRefatorado.class,
 	//TesteAlertRefatorado.class,
-	TesteCadastrarRefatorada.class, // está refatorando usando extends para classe BaseTes, entao so vai abrir um browser
+	TesteCadastrarRefatorada.class, // está refatorando usando extends para classe BaseTest, entao so vai abrir um browser
 	//TesteCampoTreinamentoRefatorado.class,
 	//TesteFramesRefatorado.class,
-	TesteRegrasCadastro.class // está refatorando usando extends para classe BaseTes, entao so vai abrir um browser
+	TesteRegrasCadastro.class // está refatorando usando extends para classe BaseTest, entao so vai abrir um browser
 })
 
 public class SuiteRegrasCampoTreinamento {

@@ -9,6 +9,8 @@ import org.junit.Test;
 
 import br.com.selenium.page.CadastrarPage;
 
+//UTILIZANDO A ARQUITEURA POM - PAGE OBJECT MODEL
+
 public class TesteAlertRefatorado {
 	//private WebDriver driver;
 	//private DSL dsl;

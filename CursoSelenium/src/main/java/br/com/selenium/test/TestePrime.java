@@ -10,6 +10,7 @@ import org.openqa.selenium.By;
 
 import br.com.selenium.core.DSL;
 
+// utilizando uma página escrita em PrimeFaces
 
 public class TestePrime {
 
