@@ -212,7 +212,8 @@ public class TesteCampoTreinamento {
 		
 		
 		// Tentando pegar o conteúdo da tag Title, porém usando JavaScript.
-		// Nao funcionou pq aparentemente o java script está atribuindo null ao inves de capturar o texto que já está na tag title. Entao o return é sempre null.
+		// Nao funcionou pq aparentemente o java script está atribuindo null ao inves de capturar o texto que já está na tag title. 
+		// Entao o return é sempre null.
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("document.title ='blah'");
 		
