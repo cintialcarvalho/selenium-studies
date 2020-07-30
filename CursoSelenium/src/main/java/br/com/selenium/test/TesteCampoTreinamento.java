@@ -6,6 +6,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -206,7 +207,27 @@ public class TesteCampoTreinamento {
 		
 		//Usando tagName. 
 		//Neste caso o texto que será localizado está dentro da tag <h3> mas NÃO garante que o texto trazido nesta tag será o correto pq ela pode não ser única
-		Assert.assertEquals("Campo de Treinamento", driver.findElement(By.tagName("h3")).getText());
+		Assert.assertEquals("Campo de Treinamento", driver.findElement(By.tagName("h3") ).getText() );
+		
+		
+		
+		// Tentando pegar o conteúdo da tag Title, porém usando JavaScript.
+		// Nao funcionou pq aparentemente o java script está atribuindo null ao inves de capturar o texto que já está na tag title. Entao o return é sempre null.
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("document.title ='blah'");
+		
+		//WebElement title = driver.findElement(By.xpath("//head/title")) ;
+		//String titulo2 = (String) js.executeScript("arguments[0].text", title);
+		//Assert.assertEquals("blah",  titulo2);
+		
+		String titulo;
+		titulo = (String) js.executeScript("document.getElementsByTagName('TITLE')[0]");
+		//titulo = (String) js.executeScript("document.getElementsByTagName('TITLE')[0].text");
+				 //(String) js.executeScript("document.title.textContent");
+		Assert.assertEquals("blah",  titulo);
+		
+		
+		
 		
 		//Usando className <=====
 		//Este teste garante que este elemento é único na página HTML
