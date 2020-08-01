@@ -16,8 +16,8 @@ public class MenuPage extends BasePage {
 	}
 	
 	public void goInGameMenu() {
-		// O menu abaixo de 'categorias' fica desabilitado e só é habilitado quando há a interação do mouse com o menu, fazendo com que ele 'se mova'
-		// Por mais que o elemento esteja na página e que o JUnit encontre-o pelo findElement, não é possível interagir com o elemento.
+		// O menu abaixo de 'categorias' fica desabilitado e só é habilitado quando há a interação do mouse com o menu, fazendo com que o menu 'se mova'.
+		// Por mais que o elemento esteja na página e que o JUnit encontre-o pelo findElement, não é possível interagir com o elemento (ul).
 		// Assim, antes de clicar no menu 'games', é necessário habilitá-lo alterando o style da tag 'ul' de 'display:nome' para 'display:block' 
 		executarJS("arguments[0].style = arguments[1]", returnWebElement(By.xpath("//*[@id='menu-games']/../../../ul[@class='nav__links']")), "display:block; ");
 		clickLink(By.xpath("//*[@id='menu-games']/span")); 
@@ -46,6 +46,7 @@ public class MenuPage extends BasePage {
 	
 	
 	
+	
 	// Saraiva - futura iteraçao
 	/*public void goInInformaticaMenu() {
 		executarJS("arguments[0].style = arguments[1]", returnWebElement(By.xpath("//*[@id='menu-games']/../../../ul[@class='nav__links']")), "display:block; ");
@@ -57,6 +58,7 @@ public class MenuPage extends BasePage {
 		clickLink(By.xpath("//*[@id='submenu-informatica-linha-gamer-01']/..")); 
 	}*/
 
+	
 	
 	
 	

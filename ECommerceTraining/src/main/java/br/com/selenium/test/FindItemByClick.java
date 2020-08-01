@@ -15,10 +15,12 @@ public class FindItemByClick extends BaseTest {
 		menuPage.goInComprePorCategoriaMenu(); 
 		menuPage.goInGameMenu(); 
 		menuPage.goInGameLancamentosMenu();
-		// Form realizaros vários testes mas não foi possível retornar o texto presente na tag title.
-		// O elemento é detectável mas sempre retorna null. Observando pelo debug, percebi que ao utilizar a instruçao par capturar o texto,
-		// o que se notava é que estava sendo atribuído o valor null, por isso o retorno é null.
 		//Assert.assertEquals("Lançamento de Games | Saraiva", menuPage.returnTextTitlePage());
+		// O assert teria que comparar se o site está na página 'Lançamentos', mas o único elemento com essa informação é a tag TITLE.
+		// Form realizaros vários testes mas não foi possível retornar o texto presente na tag title.
+		// A tag é detectável pelo driver mas sempre retorna a informação null, porém o texto existe. 
+		// Observando pelo debug, percebi que ao utilizar a instruçao para capturar o texto, era como se a instrução estivesse ATRIBUINDO ã tag o valor null 
+		// ao invés capturar o texto contigo na tag, por isso o retorno é null.
 	}
 	
 	@Test
@@ -29,9 +31,9 @@ public class FindItemByClick extends BaseTest {
 		Assert.assertEquals("Team Sonic Racing - PS4", menuPage.findItemByShownName("Team Sonic Racing - PS4") );
 	}
 	
-	/*
-	Este método nao foi concluído porque há um elemento na página que torna o campo de busca indetectável mesmo via XPath
-	A intençao seria escrever no campo texto de busca da página e pesquisar por nome 
+	
+	/*Este método nao foi concluído porque há um elemento na página que torna o campo de busca indetectável mesmo via XPath
+	A intençao seria escrever no campo texto de busca da página e pesquisar pelo nome do produto 
 	@Test
 	public void findItemBySearch() {
 		menuPage.setSearchField("culinaria expressa");

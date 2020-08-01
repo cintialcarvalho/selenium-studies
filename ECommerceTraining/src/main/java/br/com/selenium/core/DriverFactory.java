@@ -20,7 +20,7 @@ public class DriverFactory {
 	    			driver = new ChromeDriver(); 
 	    			break;
 	    		}
-			driver.manage().window().setSize(new Dimension(1200, 865));
+			driver.manage().window().setSize(new Dimension(1200, 1065));
 	    }
 	    return driver;  	
 	}	

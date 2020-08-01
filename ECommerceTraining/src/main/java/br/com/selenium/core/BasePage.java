@@ -166,6 +166,10 @@ public class BasePage {
 		return returnText(By.id(idField));
 	}
 	
+	public List<WebElement> returnContent(By by) {
+		List<WebElement> content = getDriver().findElements(by);
+		return content;
+	}
 	
 	/*** Alert ***/
 	public String returnTextAlert() {
@@ -297,6 +301,10 @@ public class BasePage {
 		return idLinha;
 	}
 
-
+	// Element
+	public int returnPresenceOfElement(By by) {
+		List<WebElement> foundElements = getDriver().findElements(by);
+		return foundElements.size(); 
+	}
 	
 }
