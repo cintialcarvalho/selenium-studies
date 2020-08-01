@@ -247,6 +247,9 @@ public class TesteCampoTreinamento {
 		driver.manage().window().setSize(new Dimension(1200, 865));
 		driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
 		
+		System.out.println("link1: " + driver.findElement(By.linkText("Voltar")).getText());
+		System.out.println("link2: " + driver.findElement(By.xpath("/html/body/center/a")).getText());
+		
 		driver.findElement(By.linkText("Voltar")).click();
 		Assert.assertEquals("Voltou!", driver.findElement(By.id("resultado")).getText());
 		
