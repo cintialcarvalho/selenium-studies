@@ -9,7 +9,9 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /* No projeto CursoSelenium as classes DSL e BasePage foram tratadas de forma destinta.
  * Neste projeto (CursoSelenium), a classe DSL foi incorporada a classe BasePage, por esse motivo os métodos estão nessa classe. 
@@ -148,7 +150,7 @@ public class BasePage {
 	
 	/*** Click Link ***/
 	public void clickLink(By by) {
-		System.out.println("	isDisplayed: " + getDriver().findElement(by).isDisplayed() + " - isEnabled: " + getDriver().findElement(by).isEnabled() + " - getText: " + getDriver().findElement(by).getText());
+		//System.out.println("	isDisplayed: " + getDriver().findElement(by).isDisplayed() + " - isEnabled: " + getDriver().findElement(by).isEnabled() + " - getText: " + getDriver().findElement(by).getText());
 		getDriver().findElement(by).click();
 	}
 	
@@ -170,6 +172,7 @@ public class BasePage {
 		List<WebElement> content = getDriver().findElements(by);
 		return content;
 	}
+	
 	
 	/*** Alert ***/
 	public String returnTextAlert() {
@@ -211,12 +214,29 @@ public class BasePage {
 		getDriver().switchTo().window(idField);
 	}
 	
+	
 	/**** WebElement****/
 	public WebElement returnWebElement(By by) {
 		return getDriver().findElement(by);
 	}
 	
+	public WebDriverWait waitFor(By by, int seconds) {
+		//WebDriverWait wait = new WebDriverWait(getDriver(), 5); // Tempo de espera em segundos: 5 segundos, podendo ser menos
+		//wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*/././a[.='"+item+"']/../../div[@class='product__actions']//span"))); 
+		
+		WebDriverWait wait = new WebDriverWait(getDriver(), seconds); 
+		wait.until(ExpectedConditions.presenceOfElementLocated(by)); 
+		return wait;
+	}
+	
+	
 	/*** JavaSript ***/
+
+	public Object executarJS(String cmd) {
+		JavascriptExecutor js = (JavascriptExecutor) getDriver();
+		return js.executeScript(cmd);
+	}
+	
 	public Object executarJS(String cmd, Object... param) {
 		JavascriptExecutor js = (JavascriptExecutor) getDriver();
 		return js.executeScript(cmd, param);
@@ -226,6 +246,7 @@ public class BasePage {
 		JavascriptExecutor js = (JavascriptExecutor) getDriver();
 		return js.executeScript(cmd, element, param);
 	}
+	
 	
 	/*** Tabela ***/
 	public void clickButtonTable(String colunaBusca, String valorColuna, String colunaBotao, String idTabela) {
@@ -251,7 +272,7 @@ public class BasePage {
 	}
 	
 	public WebElement returnCellTable(String colunaBusca, String valorColuna, String colunaBotao, String idTabela) {
-
+		
 		WebElement tabela = getDriver().findElement(By.xpath("//*[@id='"+idTabela +"']")); // este xpath leva até a tabela
 
 		//Encontrar coluna do registro
@@ -271,6 +292,7 @@ public class BasePage {
 	}
 
 	protected int returnIndexColum(String coluna, WebElement tabela) {
+		
 		// este ponto seguido de duas barras .// significa que o xpath vai fazer a busca a partir do diretório corrente. Ou seja, a partir da tabela q ele está.
 		List<WebElement> colunas = tabela.findElements(By.xpath(".//th"));   
 		
@@ -285,7 +307,6 @@ public class BasePage {
 	}
 	
 	protected int returnIndexLine(String valorColuna, WebElement tabela, int idColuna) {
-		
 		// como está na mesma tabela, pode-se usar a variavel tabela, já carregada mais acima, e assim buscar só pelo terminal .//tr/td[1], porém deixando genérico através da variável idColuna
 		List<WebElement> linhas = tabela.findElements(By.xpath("./tbody/tr/td["+idColuna+"]"));
 		

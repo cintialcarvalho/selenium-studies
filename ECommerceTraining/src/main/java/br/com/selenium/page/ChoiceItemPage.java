@@ -1,16 +1,7 @@
 package br.com.selenium.page;
-
-import static br.com.selenium.core.DriverFactory.getDriver;
-
-import java.util.List;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import br.com.selenium.core.BasePage;
-import br.com.selenium.core.DriverFactory;
 
 public class ChoiceItemPage extends BasePage {
 
@@ -36,21 +27,31 @@ public class ChoiceItemPage extends BasePage {
 	}
 	
 	public void waitForItem(String item) {
-		WebDriverWait wait = new WebDriverWait(getDriver(), 5); // Tempo de espera em segundos: 5 segundos, podendo ser menos
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*/././a[.='"+item+"']/../../div[@class='product__actions']//span"))); 
+		waitFor(By.xpath("//*/././a[.='"+item+"']/../../div[@class='product__actions']//span"), 5); 
 	}
 	
 	public void waitForCep() {
-		WebDriverWait wait = new WebDriverWait(getDriver(), 10); // Tempo de espera em segundos: 10 segundos, podendo ser menos
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("input-frete-pdp"))); 
+		//WebDriverWait wait = new WebDriverWait(getDriver(), 10); // Tempo de espera em segundos: 10 segundos, ou menor
+		//wait.until(ExpectedConditions.presenceOfElementLocated(By.id("input-frete-pdp"))); 
+		waitFor(By.id("input-frete-pdp"), 10); 
 	}
 	
 	public String returnShippingRecebeEmCasa() {
-		WebDriverWait wait = new WebDriverWait(getDriver(), 10); // Tempo de espera em segundos: 10 segundos, podendo ser menos
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='receba-em-casa']//../..//tbody[@id='include-receba-em-casa']/tr"))); 
+		waitFor(By.xpath("//*[@id='receba-em-casa']//../..//tbody[@id='include-receba-em-casa']/tr"), 10); // Tempo de espera em segundos: 10 segundos ou menos
 		return returnText(By.xpath("//*/li[@class='nav-item tab-receba-em-casa']/a"));
 	}
 	
+	public String returnMsgBlankZipcode() {
+		return returnText(By.xpath("//*/div[@class='alert alert-warning alert-dismissible fade show ml-2 mt-2']"));
+	}
+	
+	public boolean closeMsgBlankZipcode() {
+		// Não foi utilizado a função do JUnit que interage com javascript pq este elemento (alert) é um componente bootstrap.
+		// Ao tentar interagir com o JUnit, ocorria exceçao de elemento não interagível, apesar de ser detectado pelo findElement. 
+		// Também não era possível usar a função getDriver.switchTo.alert() pq nenhum alert era identificado pelo JUnit.
+		// A solução foi utilizar comando Javascript para fechar o alert.
+		executarJS(" $('.alert').alert('close'); ");
+		return returnText(By.xpath("//*/form[@id='busca-frete']/small")).isEmpty();
+	}
 	
 }
-

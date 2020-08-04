@@ -32,8 +32,9 @@ public class FindItemByClick extends BaseTest {
 	}
 	
 	
-	/*Este método nao foi concluído porque há um elemento na página que torna o campo de busca indetectável mesmo via XPath
-	A intençao seria escrever no campo texto de busca da página e pesquisar pelo nome do produto 
+	/*Este método nao foi concluído porque há um elemento na página que torna o campo de busca indetectável, mesmo via XPath.
+	 * O elemento é o '#shadow-root (open)' na tag '<linx-impulse-autocomplete></linx-impulse-autocomplete>'
+	A intençao seria escrever no campo textfield de busca da página e pesquisar pelo nome do produto 
 	@Test
 	public void findItemBySearch() {
 		menuPage.setSearchField("culinaria expressa");
