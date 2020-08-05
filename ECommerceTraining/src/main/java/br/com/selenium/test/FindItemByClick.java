@@ -17,10 +17,10 @@ public class FindItemByClick extends BaseTest {
 		menuPage.goInGameLancamentosMenu();
 		//Assert.assertEquals("Lançamento de Games | Saraiva", menuPage.returnTextTitlePage());
 		// O assert teria que comparar se o site está na página 'Lançamentos', mas o único elemento com essa informação é a tag TITLE.
-		// Form realizaros vários testes mas não foi possível retornar o texto presente na tag title.
+		// Foram realizados vários testes mas não foi possível retornar o texto presente na tag title.
 		// A tag é detectável pelo driver mas sempre retorna a informação null, porém o texto existe. 
 		// Observando pelo debug, percebi que ao utilizar a instruçao para capturar o texto, era como se a instrução estivesse ATRIBUINDO ã tag o valor null 
-		// ao invés capturar o texto contigo na tag, por isso o retorno é null.
+		// ao invés de capturar o texto contigo na tag, por isso o retorno é null.
 	}
 	
 	@Test

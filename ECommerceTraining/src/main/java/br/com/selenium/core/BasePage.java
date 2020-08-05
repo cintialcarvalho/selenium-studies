@@ -34,6 +34,10 @@ public class BasePage {
 		return getDriver().findElement(By.id(idField)).getAttribute("value");
 	}
 	
+	public String returnValueAttibuteField(By by, String attribute) {
+		return getDriver().findElement(by).getAttribute(attribute);
+	}
+	
 	
 	/*** RadioButton and RadioBox ***/
 	public void clickRadioButton(By by) {
@@ -158,7 +162,6 @@ public class BasePage {
 	    clickLink(By.linkText(textLink));
 	}
 	
-	
 	/*** Return Text ***/
 	public String returnText(By by) {
 		return getDriver().findElement(by).getText();
@@ -223,12 +226,16 @@ public class BasePage {
 	public WebDriverWait waitFor(By by, int seconds) {
 		//WebDriverWait wait = new WebDriverWait(getDriver(), 5); // Tempo de espera em segundos: 5 segundos, podendo ser menos
 		//wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*/././a[.='"+item+"']/../../div[@class='product__actions']//span"))); 
-		
 		WebDriverWait wait = new WebDriverWait(getDriver(), seconds); 
 		wait.until(ExpectedConditions.presenceOfElementLocated(by)); 
 		return wait;
 	}
 	
+	public WebDriverWait waitDisapearmentOf(By by, int seconds) {
+		WebDriverWait wait = new WebDriverWait(getDriver(), seconds); 
+		wait.until(ExpectedConditions.invisibilityOf((WebElement) by));
+		return wait;
+	}
 	
 	/*** JavaSript ***/
 
