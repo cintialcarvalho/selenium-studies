@@ -1,6 +1,7 @@
 package br.com.selenium.page;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import br.com.selenium.core.BasePage;
 import br.com.selenium.core.DriverFactory;
@@ -29,35 +30,38 @@ public class MenuPage extends BasePage {
 	}
 		
 	public String returnTextTitlePage() {
-		return returnText(By.tagName("title"));
+		return executarJS("return document.title").toString();
+		
+		/* Por algum motivo a funcao (abaixo) do Junit está sempre retornando NULL porém a tag TITLE existe e possui texto
+		   Log apresentado: org.junit.ComparisonFailure: expected:<[Lançamento de Games | Saraiva]> but was:<[]>
+		   Por este motivo estou utilizando a chamada em JS acima */
+		
+		// return returnText(By.tagName("title"));
 	}
 	
 	public String findItemByShownName(String item) {
+		waitFor(By.xpath("//*[@id=\"app\"]//../a[@class='nm-product-name']"), 10);
 		return returnText(By.xpath("//*/././a[.='"+item+"']"));
 	}	
 	
-	public void setSearchField(String value) {
-		writeField(By.className("impulse-input search-input default"), value);
+	public void setSearchField(String valueToWrite) { // Ver método na classe Page para detalhes
+		writeOnShadowElement("linx-impulse-autocomplete", "#search-form > input", valueToWrite);
 	}
 	
-	public void search() {
-		clickButton(By.className("impulse-button search-button submit"));
+	public void search() { // Ver método na classe Page para detalhes
+		clickOnShadowElementButton("linx-impulse-autocomplete", "#search-form > button");
 	}
 	
 	
 	
 	
-	// Saraiva - futura iteraçao
-	/*public void goInInformaticaMenu() {
-		executarJS("arguments[0].style = arguments[1]", returnWebElement(By.xpath("//*[@id='menu-games']/../../../ul[@class='nav__links']")), "display:block; ");
-		clickLink(By.xpath("//*[@id='menu-informatica']/..")); 
-	}
 	
-	public void goInMouseInformaticaMenu() {
-		executarJS("arguments[0].style = arguments[1]", returnWebElement(By.xpath("//*div[@class='sub-item sub-item-slug__informatica']")), "display:block; ");
-		clickLink(By.xpath("//*[@id='submenu-informatica-linha-gamer-01']/..")); 
-	}*/
-
+	
+	
+	
+	
+	
+	
 	
 	
 	

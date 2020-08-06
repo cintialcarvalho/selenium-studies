@@ -238,7 +238,6 @@ public class BasePage {
 	}
 	
 	/*** JavaSript ***/
-
 	public Object executarJS(String cmd) {
 		JavascriptExecutor js = (JavascriptExecutor) getDriver();
 		return js.executeScript(cmd);
@@ -252,6 +251,36 @@ public class BasePage {
 	public Object executarJS(String cmd, WebElement element, Object... param) {
 		JavascriptExecutor js = (JavascriptExecutor) getDriver();
 		return js.executeScript(cmd, element, param);
+	}
+	
+	
+	/*** Shadow-Root Element ***/
+	// A soluçao em que foi baseado o código abaixo foi encontrada na página do stackoverflow
+	// Link: https://stackoverflow.com/questions/56380091/how-to-interact-with-the-elements-within-shadow-root-open-while-clearing-brow
+	public WebElement getShadowTreeElement(String valueShadowHost, String valueShadowTree) {
+		WebElement shadowHost = getDriver().findElement(By.cssSelector(valueShadowHost)); // parametro: 'linx-impulse-autocomplete'
+		WebElement shadowTreeElement = getShadowElement(shadowHost,valueShadowTree); //parametro: '#search-form'
+		return shadowTreeElement;
+	}
+	
+	public static WebElement getShadowElement(WebElement shadowHost, String cssOfShadowElement) {
+	    WebElement shardowRoot = getShadowRoot(shadowHost);
+	    return shardowRoot.findElement(By.cssSelector(cssOfShadowElement));
+	}
+	
+	public static WebElement getShadowRoot(WebElement shadowHost) {
+		JavascriptExecutor js = (JavascriptExecutor) getDriver();
+		return (WebElement) js.executeScript("return arguments[0].shadowRoot", shadowHost);
+	}
+	
+	public void writeOnShadowElement(String valueShadowHost, String valueShadowTree, String valueToWrite) {
+		WebElement jsRoot = getShadowTreeElement(valueShadowHost, valueShadowTree);
+		jsRoot.sendKeys(valueToWrite);
+	}
+	
+	public void clickOnShadowElementButton(String valueShadowHost, String valueShadowTree) {
+		WebElement jsRoot = getShadowTreeElement(valueShadowHost, valueShadowTree);
+		jsRoot.click();
 	}
 	
 	
