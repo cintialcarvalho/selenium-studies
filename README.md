@@ -24,3 +24,10 @@ Running project BasicProject:
            Open SuiteGeral.java and comment the methods inicializa() and finalizar() and uncomment the method reset().
            You must have a testing cloud service account to run the suite. The information set in this test is a free trial account.
            Open DriveFactory.java and change the URL (in the option CLOUD) given by your testing cloud service.
+
+
+Running project ECommerceTraining:
+- Download the entire code.
+- Certify you have installed: Java SE 8 (Library 1.8.0_144), Junit 4.12, Selenium 3.4.0, Maven 4.0, Browser Chrome or Firefox
+- You can run the test by the suite classes or class by class using the Junit.
+  - ATTENTION: This project, that uses a real e-Commerce website, has the porpose of praticing what I had been learning during the selenium testing automation       course. In any moment the Website's integrity was put on risk as well as its data and its service. For those who want to run or analyse this project, please,     use it with responsability due to not causing any damage to the online service.  
